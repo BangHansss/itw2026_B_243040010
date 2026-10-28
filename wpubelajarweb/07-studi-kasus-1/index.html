@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studi Kasus 1 - Landing Page</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* =========================================================
+           VARIABLES & RESET
+           ========================================================= */
+        :root {
+            --bg-dark: #070913;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --card-border: rgba(255, 255, 255, 0.08);
+            --primary-cyan: #00f2fe;
+            --primary-purple: #9d4edd;
+            --text-main: #f1f5f9;
+            --text-muted: #94a3b8;
+            --glow-cyan: rgba(0, 242, 254, 0.35);
+            --glow-purple: rgba(157, 78, 221, 0.35);
+            --transition-smooth: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Animated Mesh Gradient Background */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(130px);
+            opacity: 0.45;
+            animation: floatBlob 15s infinite alternate ease-in-out;
+        }
+
+        .blob-1 {
+            top: -10%;
+            left: -10%;
+            width: 50vw;
+            height: 50vw;
+            background: var(--primary-purple);
+        }
+
+        .blob-2 {
+            bottom: -10%;
+            right: -10%;
+            width: 60vw;
+            height: 60vw;
+            background: var(--primary-cyan);
+            animation-delay: -5s;
+        }
+
+        @keyframes floatBlob {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(50px, 70px) scale(1.1); }
+            100% { transform: translate(-30px, 30px) scale(0.9); }
+        }
+
+        /* =========================================================
+           NAVBAR (Glassmorphism)
+           ========================================================= */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1.2rem 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            background: rgba(7, 9, 19, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid var(--card-border);
+        }
+
+        .logo {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .logo-dot {
+            width: 10px;
+            height: 10px;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 10px var(--primary-cyan);
+        }
+
+        nav {
+            display: flex;
+            gap: 1.8rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: var(--transition-smooth);
+        }
+
+        nav a:hover {
+            color: #fff;
+        }
+
+        .btn-kontak {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+            color: #fff !important;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px var(--glow-cyan);
+        }
+
+        .btn-kontak:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px var(--glow-purple);
+        }
+
+        /* =========================================================
+           HERO SECTION
+           ========================================================= */
+        .hero {
+            min-height: 100vh;
+            padding: 150px 8% 60px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            gap: 3.5rem;
+        }
+
+        .badge-tugas {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 14px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: var(--primary-cyan);
+            margin-bottom: 1.2rem;
+        }
+
+        .badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--primary-cyan);
+            border-radius: 50%;
+            box-shadow: 0 0 8px var(--primary-cyan);
+        }
+
+        .hero h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 3.2rem;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary-cyan), #ffffff, var(--primary-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-muted);
+            margin-bottom: 2rem;
+            font-size: 1.05rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn-utama, .btn-secondary {
+            padding: 0.8rem 1.6rem;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-utama {
+            background: linear-gradient(135deg, var(--primary-cyan), var(--primary-purple));
+            color: #fff;
+            box-shadow: 0 6px 20px var(--glow-cyan);
+        }
+
+        .btn-utama:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px var(--glow-purple);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.04);
+            color: #fff;
+            border: 1px solid var(--card-border);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Kotak Kanan / Glass Card */
+        .hero-box {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(20px);
+            padding: 2.2rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            transition: var(--transition-smooth);
+        }
+
+        .hero-box:hover {
+            transform: translateY(-5px);
+            border-color: rgba(0, 242, 254, 0.3);
+        }
+
+        .window-dot {
+            display: flex;
+            gap: 6px;
+            margin-bottom: 1.5rem;
+        }
+
+        .window-dot span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+        }
+
+        .red { background: #ff5f56; }
+        .yellow { background: #ffbd2e; }
+        .green { background: #27c93f; }
+
+        .hero-box h3 {
+            font-family: 'Space Grotesk', sans-serif;
+            margin-bottom: 0.5rem;
+            font-size: 1.25rem;
+        }
+
+        .box-desc {
+            color: var(--text-muted);
+            font-style: italic;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .box-footer {
+            border-top: 1px solid var(--card-border);
+            padding-top: 1rem;
+        }
+
+        .status-aktif {
+            font-size: 0.85rem;
+            color: #10b981;
+            background: rgba(16, 185, 129, 0.1);
+            padding: 4px 10px;
+            border-radius: 6px;
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+
+        /* =========================================================
+           FITUR SECTION
+           ========================================================= */
+        .fitur-section {
+            padding: 90px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3.5rem;
+        }
+
+        .section-title h2 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title p {
+            color: var(--text-muted);
+        }
+
+        .fitur-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .fitur-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            padding: 2rem;
+            border-radius: 16px;
+            transition: var(--transition-smooth);
+        }
+
+        .fitur-card:hover {
+            border-color: rgba(0, 242, 254, 0.3);
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .ikon {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .fitur-card h3 {
+            font-size: 1.15rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .fitur-card p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* =========================================================
+           FOOTER
+           ========================================================= */
+        footer {
+            text-align: center;
+            padding: 2.5rem 8%;
+            border-top: 1px solid var(--card-border);
+            color: var(--text-muted);
+            font-size: 0.85rem;
+        }
+
+        /* Responsif untuk HP */
+        @media (max-width: 850px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding-top: 130px;
+                text-align: center;
+            }
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+            .hero-buttons {
+                justify-content: center;
+            }
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Mesh Gradient -->
+    <div class="bg-mesh">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+    </div>
+
+    <!-- Header / Navigasi -->
+    <header>
+        <a href="#" class="logo">
+            <div class="logo-dot"></div> Bagas Raihan T
+        </a>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#tentang">Tentang</a>
+            <a href="#kontak" class="btn-kontak">Kontak</a>
+        </nav>
+    </header>
+
+    <!-- Bagian Utama / Hero -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <div class="badge-tugas">
+                <div class="badge-dot"></div> Studi Kasus 1: HTML Landing Page
+            </div>
+            <h1>Selamat Datang di <br><span class="text-gradient">Website Saya</span></h1>
+            <p>
+                Halo! Ini adalah latihan membuat HTML Landing Page responsif untuk mata kuliah Internet dan Teknologi Web. Dibuat dengan struktur yang bersih dan mudah dipahami.
+            </p>
+            <div class="hero-buttons">
+                <a href="#tentang" class="btn-utama">Pelajari Lebih Lanjut</a>
+                <a href="https://github.com" target="_blank" class="btn-secondary">GitHub Saya</a>
+            </div>
+        </div>
+
+        <!-- Kotak Ilustrasi Kanan -->
+        <div class="hero-box">
+            <div class="window-dot">
+                <span class="red"></span>
+                <span class="yellow"></span>
+                <span class="green"></span>
+            </div>
+            <h3>Catatan Belajar WPU</h3>
+            <p class="box-desc">"Koding bukan soal seberapa cepat kamu mengetik, tapi seberapa konsisten kamu memecahkan masalah dari baris ke baris."</p>
+            <div class="box-footer">
+                <span class="status-aktif">Status: Selesai</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Fitur / Konten Pendukung -->
+    <section id="tentang" class="fitur-section">
+        <div class="section-title">
+            <h2>Hal Yang Dipelajari</h2>
+            <p>Beberapa poin penting yang dipraktikkan dalam pembuatan landing page ini.</p>
+        </div>
+
+        <div class="fitur-grid">
+            <div class="fitur-card">
+                <div class="ikon">💻</div>
+                <h3>Struktur HTML5</h3>
+                <p>Menggunakan tag semantik yang benar seperti header, section, dan footer agar rapi.</p>
+            </div>
+
+            <div class="fitur-card">
+                <div class="ikon">🎨</div>
+                <h3>Styling CSS3</h3>
+                <p>Mengatur tata letak menggunakan Flexbox serta warna yang selaras dan nyaman dilihat.</p>
+            </div>
+
+            <div class="fitur-card">
+                <div class="ikon">📱</div>
+                <h3>Desain Responsif</h3>
+                <p>Memastikan tampilan web tetap bagus saat diakses lewat laptop maupun handphone.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Footer -->
+    <footer id="kontak">
+        <p>&copy; 2026 | Dibuat untuk Tugas Kuliah Internet & Teknologi Web.</p>
+    </footer>
+
+</body>
+</html>
