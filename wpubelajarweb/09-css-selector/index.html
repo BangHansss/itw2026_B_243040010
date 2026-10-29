@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chapter 9 — CSS Selector | Bagas Raihan T.</title>
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="bg-mesh">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header>
+        <a href="#" class="logo">hans<span class="logo-dot"></span></a>
+        <div class="badge-nav">Chapter 9 : CSS Selector</div>
+    </header>
+
+    <main class="main-wrapper">
+        <div class="hero-card">
+
+            <section class="hero">
+                <div class="hero-content">
+                    <div class="badge-learning">
+                        <span class="badge-dot"></span> TUGAS CSS SELECTOR
+                    </div>
+                    <h1>Eksplorasi <span class="text-gradient">CSS Selector</span><br>Secara Mendalam.</h1>
+                    <p>
+                        Halaman ini dibuat untuk mendemonstrasikan berbagai macam pemilih (selector) CSS mulai dari tag dasar, kombinator spasi, hingga penggunaan ID dan Class sesuai materi WPU.
+                    </p>
+                </div>
+
+                <div class="little-corner-card">
+                    <div class="corner-header">
+                        <span class="corner-title">STUDENT INFO</span>
+                        <span class="corner-icon">✻</span>
+                    </div>
+                    <div class="profile-circle">B.</div>
+                    <h3>Bagas Raihan T.</h3>
+                    <p class="profile-subtitle">NPM: 243040010</p>
+                    
+                    <div class="corner-info">
+                        <div class="info-item">
+                            <span class="info-label">Mata Kuliah</span>
+                            <span class="info-value">Internet & Teknologi Web</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="section-selectors">
+                <h2>Struktur & <span class="text-gradient">Hasil Selector.</span></h2>
+                
+                <div class="cards-grid">
+
+                    <div class="explore-card">
+                        <span class="card-num">01</span>
+                        <h3>Tag & Grouping Selector</h3>
+                        <p class="card-desc">Menargetkan tag HTML langsung (seperti h4) dan menggabungkan beberapa tag dengan koma.</p>
+                        <div class="preview-box">
+                            <h4>Contoh Heading 4 (Tag Selector)</h4>
+                            <p class="tag-sample">Teks ini diatur menggunakan tag selector standar.</p>
+                        </div>
+                    </div>
+
+                    <div class="explore-card">
+                        <span class="card-num">02</span>
+                        <h3>Kombinator Spasi</h3>
+                        <p class="card-desc">Memilih elemen di dalam elemen lain (contoh: tag a di dalam li di dalam ul).</p>
+                        <div class="preview-box">
+                            <ul class="menu-list">
+                                <li><a href="#">Menu Item Pertama (ul li a)</a></li>
+                                <li><a href="#">Menu Item Kedua (ul li a)</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="explore-card card-highlight">
+                        <span class="card-num">03</span>
+                        <h3>ID & Class Selector</h3>
+                        <p class="card-desc">Menggunakan tanda pagar (#) untuk ID yang unik dan titik (.) untuk kelas.</p>
+                        <div class="preview-box">
+                            <div id="teks-id">ID Selector (#teks-id)</div>
+                            <div class="teks-class">Class Selector (.teks-class)</div>
+                        </div>
+                    </div>
+
+                    <div class="explore-card">
+                        <span class="card-num">04</span>
+                        <h3>Compound Selector</h3>
+                        <p class="card-desc">Menggabungkan tag dan kelas secara langsung (contoh: p.khusus) agar lebih spesifik.</p>
+                        <div class="preview-box">
+                            <p class="khusus">Paragraf khusus menggunakan selector gabungan (p.khusus).</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-left">hans<span class="logo-dot"></span></div>
+        <div class="footer-mid">Tugas Chapter 9 CSS Selector • Bagas Raihan T. (243040010)</div>
+        <div class="footer-right">© 2026</div>
+    </footer>
+
+</body>
+</html>
